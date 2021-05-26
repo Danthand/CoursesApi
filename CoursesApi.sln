@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31229.75
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursesApi", "CoursesApi\CoursesApi.csproj", "{98214845-7189-4780-BE47-D5242929405B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursesApi", "CoursesApi\CoursesApi.csproj", "{98214845-7189-4780-BE47-D5242929405B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore.Domain", "EFCore.Domain\EFCore.Domain.csproj", "{97B1321C-244F-45EE-B768-430D87BBC427}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore.Repository", "EFCore.Repository\EFCore.Repository.csproj", "{8F3D83EA-3CF7-4CAB-9577-19891464C61E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{98214845-7189-4780-BE47-D5242929405B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98214845-7189-4780-BE47-D5242929405B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98214845-7189-4780-BE47-D5242929405B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97B1321C-244F-45EE-B768-430D87BBC427}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97B1321C-244F-45EE-B768-430D87BBC427}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97B1321C-244F-45EE-B768-430D87BBC427}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97B1321C-244F-45EE-B768-430D87BBC427}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F3D83EA-3CF7-4CAB-9577-19891464C61E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F3D83EA-3CF7-4CAB-9577-19891464C61E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F3D83EA-3CF7-4CAB-9577-19891464C61E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F3D83EA-3CF7-4CAB-9577-19891464C61E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
