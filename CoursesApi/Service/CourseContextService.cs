@@ -9,7 +9,7 @@ namespace CoursesApi.Service
 {
     public interface ICourseValidationService
     {
-        public CourseValidation ValidadeEntries(Courses course);
+        public CourseValidation ValidadeEntries(Courses course, CoursesContext context);
 
     }
     public class CourseContextService : ICourseValidationService
@@ -17,23 +17,24 @@ namespace CoursesApi.Service
         public string invalidDateError = "Não é permitido a inclusão de cursos com a data de início menor que a data atual. ";
         public string courseRangeOverlapError = "Existe(m) curso(s) planejados(s) dentro do período informado.";
 
-        public CourseValidation ValidadeEntries(Courses course)
+        public CourseValidation ValidadeEntries(Courses course, CoursesContext context)
         {
             var result = new CourseValidation();
             result.ErrorMessage = "";
-            using (var context = new CoursesContext())
-            {
-                var validDate = course.StartDate.Date < DateTime.Now.Date;
-                bool courseRangeOverlap = context.courses.Where(s => course.StartDate <= s.FinishDate && course.FinishDate >= s.StartDate).Count() > 0;
-                 
-                if (!validDate)
-                    result.ErrorMessage += invalidDateError;
 
-                if (!courseRangeOverlap)
-                    result.ErrorMessage += courseRangeOverlapError;
+            var validDate = course.StartDate.Date > DateTime.Now.Date;
+            bool courseRangeOverlap = context.courses.Where(s => course.StartDate <= s.FinishDate && course.FinishDate >= s.StartDate).Count() > 0;
 
-                return result;
-            }
+            if (!validDate)
+                result.ErrorMessage += invalidDateError;
+
+            if (!courseRangeOverlap)
+                result.ErrorMessage += courseRangeOverlapError;
+
+            result.IsValid = validDate && !courseRangeOverlap;
+
+            return result;
+
         }
     }
 

@@ -35,7 +35,7 @@ namespace CoursesApi.Controllers
         [HttpPost]
         public IActionResult Add(Courses course)
         {
-            var courseDateValidation = _courseValidationService.ValidadeEntries(course);
+            var courseDateValidation = _courseValidationService.ValidadeEntries(course, _coursesContext);
 
             if (courseDateValidation.IsValid)
             {
@@ -48,38 +48,35 @@ namespace CoursesApi.Controllers
             {
                 return BadRequest(courseDateValidation.ErrorMessage);
             }
-
         }
 
         [HttpPut]
         public IActionResult Put(Courses course)
         {
-            var courseDateValidation = _courseValidationService.ValidadeEntries(course);
+            var courseContext = _coursesContext.courses.Where(x => x.Id == course.Id);
+            _coursesContext.Update(course);
+
+            var courseDateValidation = _courseValidationService.ValidadeEntries(course, _coursesContext);
 
             if (courseDateValidation.IsValid)
             {
-
-                _coursesContext.Update(course);
                 _coursesContext.SaveChanges();
-
                 return Ok();
             }
             else
             {
                 return BadRequest(courseDateValidation.ErrorMessage);
             }
+
         }
 
-        [HttpDelete("Delete/{id}")]
+        [HttpDelete("delete/{id}")]
         public IActionResult Delete(Guid id)
         {
             var course = _coursesContext.courses.Where(x => x.Id == id).Single();
             _coursesContext.courses.Remove(course);
+            _coursesContext.SaveChanges();
             return Ok();
         }
-        
-
     }
-
-
 }
