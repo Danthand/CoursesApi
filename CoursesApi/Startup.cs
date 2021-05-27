@@ -70,7 +70,7 @@ namespace CoursesApi
     {
         public static void Register(this IServiceCollection services)
         {
-            services.AddTransient<ICourseValidationService, CourseContextService>();
+            services.AddSingleton<ICourseValidationService, CourseContextService>();
 
         }
     }

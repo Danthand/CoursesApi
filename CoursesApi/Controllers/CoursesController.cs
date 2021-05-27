@@ -67,7 +67,6 @@ namespace CoursesApi.Controllers
             {
                 return BadRequest(courseDateValidation.ErrorMessage);
             }
-
         }
 
         [HttpDelete("delete/{id}")]
